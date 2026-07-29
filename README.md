@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Carmela · Pool Party 15
 
-## Getting Started
+Landing de invitación para el cumple de 15 de Carmela.
 
-First, run the development server:
+## Versiones
+
+| Ruta | Estilo |
+|------|--------|
+| [`/`](http://localhost:3000/) | Club de pileta (v1) |
+| [`/v2`](http://localhost:3000/v2) | Elegante — verde bosque + script |
+| [`/v3`](http://localhost:3000/v3) | Urbana — Syne + fucsia/naranja |
+
+## Desarrollo
 
 ```bash
+cd carmela
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Links pendientes (Yanina)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Editá [`src/lib/event.ts`](src/lib/event.ts):
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `googleFormUrl` — formulario de confirmación (usado en v1)
+- `mercadopagoUrl` — link de pago / seña $10.000
+- `photosAlbumUrl` — álbum de Google Photos
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+En v2 y v3 el flujo de confirmación es: seña → nombre → listo (UI local hasta que haya backend/form).
