@@ -19,9 +19,9 @@ export const event = {
   mapsEmbedUrl:
     "https://maps.google.com/maps?q=-31.73233,-60.80377&z=16&hl=es&output=embed",
   // Invite-collaborators link (keep ?si= — without it guests only view)
-  spotifyPlaylistId: "6XUcZWeQNAMbWqRURFyryH",
+  spotifyPlaylistId: "4kWocpLTZhZbcvuuDkyLoK",
   spotifyPlaylistUrl:
-    "https://open.spotify.com/playlist/6XUcZWeQNAMbWqRURFyryH?si=YDsx95v6Swm91YqED4ZIvw",
+    "https://open.spotify.com/playlist/4kWocpLTZhZbcvuuDkyLoK?si=00J7OsWzR9qrnb5xqdqi0w",
   spotifyPlaylistName: "Mis XV's",
   mercadopagoUrl: "https://mpago.la/24tc9un",
   contributionAmount: "$10.000",
