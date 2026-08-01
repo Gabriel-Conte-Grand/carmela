@@ -9,6 +9,7 @@ import { event, hasLink } from "@/lib/event";
 import { RotatingPhoto } from "@/components/RotatingPhoto";
 import { ActivityToast } from "@/components/ActivityToast";
 import { ConfirmElegant } from "@/components/ConfirmElegant";
+import { SpotifyPlaylistLink } from "@/components/SpotifyPlaylistLink";
 import s from "./styles.module.css";
 
 const script = Pinyon_Script({
@@ -117,14 +118,9 @@ export default function V2Elegant() {
           <div className={s.infoLabel}>La música</div>
           <div className={s.sideScript}>Dejame tu canción</div>
           <p className={s.sideItalic}>La playlist la armamos entre todos.</p>
-          <a
-            href={event.spotifyPlaylistUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={s.linkInk}
-          >
+          <SpotifyPlaylistLink className={s.linkInk}>
             Sumar un tema
-          </a>
+          </SpotifyPlaylistLink>
         </div>
       </section>
 

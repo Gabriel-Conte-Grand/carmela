@@ -4,6 +4,7 @@ import { Fredoka } from "next/font/google";
 import { event, hasLink } from "@/lib/event";
 import { QrImage } from "@/components/QrImage";
 import { ConfirmHome } from "@/components/ConfirmHome";
+import { SpotifyPlaylistLink } from "@/components/SpotifyPlaylistLink";
 import s from "./home.module.css";
 
 const display = Fredoka({
@@ -47,14 +48,9 @@ export default function Home() {
             <a href="#confirmar" className={s.btn}>
               Confirmar asistencia
             </a>
-            <a
-              href={event.spotifyPlaylistUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${s.btn} ${s.btnGhost}`}
-            >
+            <SpotifyPlaylistLink className={`${s.btn} ${s.btnGhost}`}>
               Sumar música
-            </a>
+            </SpotifyPlaylistLink>
           </div>
         </div>
 
@@ -137,14 +133,9 @@ export default function Home() {
                 <strong>{event.spotifyPlaylistName}</strong>. Lo que agregues
                 suena en la fiesta.
               </p>
-              <a
-                href={event.spotifyPlaylistUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${s.btn} ${s.btnSun}`}
-              >
+              <SpotifyPlaylistLink className={`${s.btn} ${s.btnSun}`}>
                 Abrir en Spotify
-              </a>
+              </SpotifyPlaylistLink>
             </div>
           </div>
           <div className={`${s.card} ${s.cardLight}`} id="fotos">

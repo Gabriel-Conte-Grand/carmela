@@ -18,8 +18,9 @@ export const event = {
     "https://www.google.com/maps?q=-31.732330322265625,-60.803768157958984&z=17&hl=es",
   mapsEmbedUrl:
     "https://maps.google.com/maps?q=-31.73233,-60.80377&z=16&hl=es&output=embed",
+  spotifyPlaylistId: "4VTBgRmIwooKOFknwMsCKg",
   spotifyPlaylistUrl:
-    "https://open.spotify.com/playlist/4VTBgRmIwooKOFknwMsCKg?si=VCZ8PadVQxqu1d7dJzrSBw",
+    "https://open.spotify.com/playlist/4VTBgRmIwooKOFknwMsCKg",
   spotifyPlaylistName: "Mis XV",
   mercadopagoUrl: "https://mpago.la/24tc9un",
   contributionAmount: "$10.000",

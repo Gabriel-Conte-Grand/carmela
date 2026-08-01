@@ -5,6 +5,7 @@ import { event, hasLink } from "@/lib/event";
 import { RotatingPhoto } from "@/components/RotatingPhoto";
 import { ActivityToast } from "@/components/ActivityToast";
 import { ConfirmUrban } from "@/components/ConfirmUrban";
+import { SpotifyPlaylistLink } from "@/components/SpotifyPlaylistLink";
 import s from "./styles.module.css";
 
 const display = Syne({
@@ -129,14 +130,9 @@ export default function V3Urban() {
               <br />
               Si no la agregás, no llorés.
             </p>
-            <a
-              href={event.spotifyPlaylistUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={s.linkGhost}
-            >
+            <SpotifyPlaylistLink className={s.linkGhost}>
               Abrir Spotify ↗
-            </a>
+            </SpotifyPlaylistLink>
           </div>
         </div>
       </section>
