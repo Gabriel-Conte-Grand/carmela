@@ -18,10 +18,11 @@ export const event = {
     "https://www.google.com/maps?q=-31.732330322265625,-60.803768157958984&z=17&hl=es",
   mapsEmbedUrl:
     "https://maps.google.com/maps?q=-31.73233,-60.80377&z=16&hl=es&output=embed",
-  spotifyPlaylistId: "4VTBgRmIwooKOFknwMsCKg",
+  // Invite-collaborators link (keep ?si= — without it guests only view)
+  spotifyPlaylistId: "6XUcZWeQNAMbWqRURFyryH",
   spotifyPlaylistUrl:
-    "https://open.spotify.com/playlist/4VTBgRmIwooKOFknwMsCKg",
-  spotifyPlaylistName: "Mis XV",
+    "https://open.spotify.com/playlist/6XUcZWeQNAMbWqRURFyryH?si=jSgYP_krTi6XM4Kzo1qb9A",
+  spotifyPlaylistName: "Mis XV's",
   mercadopagoUrl: "https://mpago.la/24tc9un",
   contributionAmount: "$10.000",
   contributionNote: "Para reservar tu lugar, dejá tu aporte de $10.000.",

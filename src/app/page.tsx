@@ -129,12 +129,12 @@ export default function Home() {
             <div className={s.cardBody}>
               <h3>La playlist</h3>
               <p>
-                Sumá los temas que no pueden faltar a{" "}
-                <strong>{event.spotifyPlaylistName}</strong>. Lo que agregues
-                suena en la fiesta.
+                Unite a{" "}
+                <strong>{event.spotifyPlaylistName}</strong> y sumá los temas
+                que no pueden faltar. Lo que agregues suena en la fiesta.
               </p>
               <SpotifyPlaylistLink className={`${s.btn} ${s.btnSun}`}>
-                Abrir en Spotify
+                Unirme y sumar temas
               </SpotifyPlaylistLink>
             </div>
           </div>

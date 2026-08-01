@@ -9,44 +9,28 @@ type Props = {
 };
 
 /**
- * Opens the playlist in the Spotify app on Android/iPhone when possible,
- * and falls back to open.spotify.com if the app is missing.
+ * Opens the collaborator invite URL in the Spotify app when possible.
+ * Keeps the full https invite (?si=...) so guests can join and edit —
+ * a bare spotify:playlist: link only opens view mode.
  */
 export function SpotifyPlaylistLink({ className, children }: Props) {
   const webUrl = event.spotifyPlaylistUrl;
-  const appUrl = `spotify:playlist:${event.spotifyPlaylistId}`;
 
   function openSpotify(e: MouseEvent<HTMLAnchorElement>) {
     e.preventDefault();
 
-    const ua = navigator.userAgent;
-    const isAndroid = /Android/i.test(ua);
+    const isAndroid = /Android/i.test(navigator.userAgent);
 
     if (isAndroid) {
+      const path = webUrl.replace(/^https?:\/\//, "");
       window.location.href =
-        `intent://playlist/${event.spotifyPlaylistId}` +
-        `#Intent;scheme=spotify;package=com.spotify.music;` +
+        `intent://${path}#Intent;scheme=https;package=com.spotify.music;` +
         `S.browser_fallback_url=${encodeURIComponent(webUrl)};end`;
       return;
     }
 
-    let leftForApp = false;
-    const markLeft = () => {
-      leftForApp = true;
-    };
-
-    document.addEventListener("visibilitychange", markLeft);
-    window.addEventListener("pagehide", markLeft);
-
-    window.location.href = appUrl;
-
-    window.setTimeout(() => {
-      document.removeEventListener("visibilitychange", markLeft);
-      window.removeEventListener("pagehide", markLeft);
-      if (!leftForApp && !document.hidden) {
-        window.location.href = webUrl;
-      }
-    }, 1400);
+    // iOS / desktop: https invite — Universal Links open the app with join flow
+    window.location.href = webUrl;
   }
 
   return (
