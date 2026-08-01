@@ -21,7 +21,7 @@ export const event = {
   // Invite-collaborators link (keep ?si= — without it guests only view)
   spotifyPlaylistId: "6XUcZWeQNAMbWqRURFyryH",
   spotifyPlaylistUrl:
-    "https://open.spotify.com/playlist/6XUcZWeQNAMbWqRURFyryH?si=jSgYP_krTi6XM4Kzo1qb9A",
+    "https://open.spotify.com/playlist/6XUcZWeQNAMbWqRURFyryH?si=YDsx95v6Swm91YqED4ZIvw",
   spotifyPlaylistName: "Mis XV's",
   mercadopagoUrl: "https://mpago.la/24tc9un",
   contributionAmount: "$10.000",
