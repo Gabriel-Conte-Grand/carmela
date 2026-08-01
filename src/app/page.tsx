@@ -4,7 +4,7 @@ import { Fredoka } from "next/font/google";
 import { event, hasLink } from "@/lib/event";
 import { QrImage } from "@/components/QrImage";
 import { ConfirmHome } from "@/components/ConfirmHome";
-import { SuggestSong } from "@/components/SuggestSong";
+import { SpotifyPlaylistLink } from "@/components/SpotifyPlaylistLink";
 import s from "./home.module.css";
 
 const display = Fredoka({
@@ -48,9 +48,9 @@ export default function Home() {
             <a href="#confirmar" className={s.btn}>
               Confirmar asistencia
             </a>
-            <a href="#musica" className={`${s.btn} ${s.btnGhost}`}>
+            <SpotifyPlaylistLink className={`${s.btn} ${s.btnGhost}`}>
               Sumar música
-            </a>
+            </SpotifyPlaylistLink>
           </div>
         </div>
 
@@ -129,11 +129,13 @@ export default function Home() {
             <div className={s.cardBody}>
               <h3>La playlist</h3>
               <p>
-                Dejá el tema que no puede faltar en{" "}
-                <strong>{event.spotifyPlaylistName}</strong>. Lo anotamos y
-                suena en la fiesta.
+                Unite a{" "}
+                <strong>{event.spotifyPlaylistName}</strong> y sumá los temas
+                que no pueden faltar. Lo que agregues suena en la fiesta.
               </p>
-              <SuggestSong />
+              <SpotifyPlaylistLink className={`${s.btn} ${s.btnSun}`}>
+                Unirme y sumar temas
+              </SpotifyPlaylistLink>
             </div>
           </div>
           <div className={`${s.card} ${s.cardLight}`} id="fotos">
