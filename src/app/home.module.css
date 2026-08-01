@@ -316,6 +316,15 @@
   padding: 1.6rem;
 }
 
+.stepLocked {
+  opacity: 0.55;
+}
+
+.stepLocked .rsvpInput:disabled {
+  cursor: not-allowed;
+  background: #eef5f4;
+}
+
 .stepNum {
   display: inline-grid;
   place-items: center;
@@ -537,8 +546,9 @@
 
 .btn:disabled {
   opacity: 0.7;
-  cursor: wait;
+  cursor: not-allowed;
   transform: none;
+  box-shadow: none;
 }
 
 /* ——— RSVP form ——— */

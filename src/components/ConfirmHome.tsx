@@ -1,17 +1,39 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { event } from "@/lib/event";
 import s from "@/app/home.module.css";
 
 type Status = "idle" | "loading" | "ok" | "error";
 
+const STORAGE_KEY = "carmela-seña-abierta";
+
 export function ConfirmHome() {
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
-  const [paid, setPaid] = useState(false);
+  const [openedPay, setOpenedPay] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    try {
+      if (sessionStorage.getItem(STORAGE_KEY) === "1") {
+        setOpenedPay(true);
+      }
+    } catch {
+      // ignore
+    }
+  }, []);
+
+  function markPayOpened() {
+    setOpenedPay(true);
+    setError("");
+    try {
+      sessionStorage.setItem(STORAGE_KEY, "1");
+    } catch {
+      // ignore
+    }
+  }
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
@@ -19,12 +41,12 @@ export function ConfirmHome() {
 
     const n = nombre.trim();
     const a = apellido.trim();
-    if (!n || !a) {
-      setError("Completá nombre y apellido.");
+    if (!openedPay) {
+      setError("Primero abrí el link de la seña para anotarte.");
       return;
     }
-    if (!paid) {
-      setError("Marcá que ya dejaste la seña para anotarte.");
+    if (!n || !a) {
+      setError("Completá nombre y apellido.");
       return;
     }
 
@@ -43,6 +65,11 @@ export function ConfirmHome() {
         throw new Error(data.error || "No se pudo guardar. Probá de nuevo.");
       }
       setStatus("ok");
+      try {
+        sessionStorage.removeItem(STORAGE_KEY);
+      } catch {
+        // ignore
+      }
     } catch (err) {
       setStatus("error");
       setError(err instanceof Error ? err.message : "Algo salió mal.");
@@ -71,16 +98,22 @@ export function ConfirmHome() {
           target="_blank"
           rel="noopener noreferrer"
           className={s.btn}
+          onClick={markPayOpened}
         >
           Ir a Mercado Pago
         </a>
+        {openedPay && (
+          <p className={s.hint}>Cuando vuelvas, podés anotarte acá abajo.</p>
+        )}
       </div>
 
-      <div className={s.step}>
+      <div className={`${s.step} ${!openedPay ? s.stepLocked : ""}`}>
         <span className={s.stepNum}>2</span>
         <h3 className={s.stepTitle}>Tu lugar</h3>
         <p className={s.stepText}>
-          Anotate con tu nombre y apellido para quedar en la lista.
+          {openedPay
+            ? "Anotate con tu nombre y apellido para quedar en la lista."
+            : "Después de abrir el link de la seña, acá podés anotarte."}
         </p>
 
         <form className={s.rsvpForm} onSubmit={onSubmit}>
@@ -93,6 +126,7 @@ export function ConfirmHome() {
               autoComplete="given-name"
               maxLength={60}
               required
+              disabled={!openedPay}
             />
           </label>
           <label className={s.rsvpLabel}>
@@ -104,16 +138,8 @@ export function ConfirmHome() {
               autoComplete="family-name"
               maxLength={60}
               required
+              disabled={!openedPay}
             />
-          </label>
-
-          <label className={s.rsvpCheck}>
-            <input
-              type="checkbox"
-              checked={paid}
-              onChange={(e) => setPaid(e.target.checked)}
-            />
-            <span>Ya dejé la seña</span>
           </label>
 
           {error && <p className={s.rsvpError}>{error}</p>}
@@ -121,7 +147,7 @@ export function ConfirmHome() {
           <button
             type="submit"
             className={s.btn}
-            disabled={status === "loading"}
+            disabled={!openedPay || status === "loading"}
           >
             {status === "loading" ? "Guardando…" : "Anotame en la lista"}
           </button>
