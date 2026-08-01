@@ -4,13 +4,13 @@ export const runtime = "nodejs";
 
 type Body = {
   nombre?: unknown;
-  apellido?: unknown;
-  paid?: unknown;
+  tema?: unknown;
+  artista?: unknown;
 };
 
-function cleanName(value: unknown): string {
+function clean(value: unknown, max: number): string {
   if (typeof value !== "string") return "";
-  return value.trim().replace(/\s+/g, " ").slice(0, 60);
+  return value.trim().replace(/\s+/g, " ").slice(0, max);
 }
 
 export async function POST(request: Request) {
@@ -32,20 +32,13 @@ export async function POST(request: Request) {
     );
   }
 
-  const nombre = cleanName(body.nombre);
-  const apellido = cleanName(body.apellido);
-  const paid = body.paid === true;
+  const nombre = clean(body.nombre, 60);
+  const tema = clean(body.tema, 120);
+  const artista = clean(body.artista, 120);
 
-  if (!nombre || !apellido) {
+  if (!tema) {
     return NextResponse.json(
-      { ok: false, error: "Completá nombre y apellido" },
-      { status: 400 }
-    );
-  }
-
-  if (!paid) {
-    return NextResponse.json(
-      { ok: false, error: "Confirmá que ya dejaste la seña" },
+      { ok: false, error: "Escribí el nombre del tema" },
       { status: 400 }
     );
   }
@@ -55,10 +48,10 @@ export async function POST(request: Request) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        tipo: "rsvp",
+        tipo: "tema",
         nombre,
-        apellido,
-        paid: true,
+        tema,
+        artista,
         at: new Date().toISOString(),
       }),
       redirect: "follow",
@@ -66,18 +59,18 @@ export async function POST(request: Request) {
 
     if (!res.ok) {
       const text = await res.text().catch(() => "");
-      console.error("Sheet webhook failed", res.status, text);
+      console.error("Song webhook failed", res.status, text);
       return NextResponse.json(
-        { ok: false, error: "No se pudo guardar en la lista" },
+        { ok: false, error: "No se pudo guardar el tema" },
         { status: 502 }
       );
     }
 
     return NextResponse.json({ ok: true });
   } catch (err) {
-    console.error("Sheet webhook error", err);
+    console.error("Song webhook error", err);
     return NextResponse.json(
-      { ok: false, error: "No se pudo guardar en la lista" },
+      { ok: false, error: "No se pudo guardar el tema" },
       { status: 502 }
     );
   }
