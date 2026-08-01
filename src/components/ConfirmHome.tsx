@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import confetti from "canvas-confetti";
 import { event } from "@/lib/event";
 import s from "@/app/home.module.css";
@@ -22,7 +22,7 @@ function fireSuccessConfetti() {
   confetti({
     particleCount: 110,
     spread: 70,
-    origin: { y: 0.65 },
+    origin: { y: 0.45 },
     colors,
   });
 
@@ -31,14 +31,14 @@ function fireSuccessConfetti() {
       particleCount: 60,
       angle: 60,
       spread: 55,
-      origin: { x: 0, y: 0.7 },
+      origin: { x: 0, y: 0.5 },
       colors,
     });
     confetti({
       particleCount: 60,
       angle: 120,
       spread: 55,
-      origin: { x: 1, y: 0.7 },
+      origin: { x: 1, y: 0.5 },
       colors,
     });
   }, 180);
@@ -50,6 +50,7 @@ export function ConfirmHome() {
   const [openedPay, setOpenedPay] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
+  const successRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     try {
@@ -62,9 +63,18 @@ export function ConfirmHome() {
   }, []);
 
   useEffect(() => {
-    if (status === "ok") {
-      fireSuccessConfetti();
+    if (status !== "ok") return;
+
+    const el = successRef.current;
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
     }
+
+    const confettiTimer = window.setTimeout(() => {
+      fireSuccessConfetti();
+    }, 280);
+
+    return () => window.clearTimeout(confettiTimer);
   }, [status]);
 
   function markPayOpened() {
@@ -120,7 +130,7 @@ export function ConfirmHome() {
 
   if (status === "ok") {
     return (
-      <div className={s.confirmSuccess}>
+      <div ref={successRef} className={s.confirmSuccess}>
         <p className={s.confirmSuccessTitle}>Listo, ya estás en la lista</p>
         <p className={s.confirmSuccessText}>¡Nos vemos en la pile!</p>
       </div>
