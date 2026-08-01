@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { Fredoka } from "next/font/google";
 import { event, hasLink } from "@/lib/event";
 import { QrImage } from "@/components/QrImage";
+import { ConfirmHome } from "@/components/ConfirmHome";
 import s from "./home.module.css";
 
 const display = Fredoka({
@@ -19,8 +19,6 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  const formReady = hasLink(event.googleFormUrl);
-  const payReady = hasLink(event.mercadopagoUrl);
   const albumReady = hasLink(event.photosAlbumUrl);
 
   return (
@@ -102,61 +100,9 @@ export default function Home() {
           <div>
             <h2 className={s.sectionHead}>Reservá tu lugar</h2>
             <p className={s.sectionSub}>
-              Son dos pasos: primero confirmás que venís y después hacés un
-              aporte mínimo por Mercado Pago que deja tu lugar reservado.
+              Para reservar tu lugar, dejá la seña y anotate con tu nombre.
             </p>
-            <div className={s.steps}>
-              <div className={s.step}>
-                <span className={s.stepNum}>1</span>
-                <h3 className={s.stepTitle}>Confirmá que venís</h3>
-                <p className={s.stepText}>
-                  Completá el formulario con tu nombre. Tarda un minuto.
-                </p>
-                {formReady ? (
-                  <a
-                    href={event.googleFormUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={s.btn}
-                  >
-                    Ir al formulario
-                  </a>
-                ) : (
-                  <>
-                    <span className={`${s.btn} ${s.btnOff}`}>
-                      Ir al formulario
-                    </span>
-                    <p className={s.hint}>Se publica en breve</p>
-                  </>
-                )}
-              </div>
-              <div className={s.step}>
-                <span className={s.stepNum}>2</span>
-                <h3 className={s.stepTitle}>Hacé tu aporte</h3>
-                <p className={s.stepText}>
-                  Seña de {event.contributionAmount}. {event.contributionNote}
-                </p>
-                {payReady ? (
-                  <a
-                    href={event.mercadopagoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={s.btn}
-                  >
-                    Pagar con Mercado Pago
-                  </a>
-                ) : (
-                  <>
-                    <span className={`${s.btn} ${s.btnOff}`}>
-                      Pagar con Mercado Pago
-                    </span>
-                    <p className={s.hint}>
-                      El link de pago se publica en breve
-                    </p>
-                  </>
-                )}
-              </div>
-            </div>
+            <ConfirmHome />
           </div>
 
           <div className={s.photoFrame}>
@@ -253,10 +199,6 @@ export default function Home() {
       <footer className={s.footer}>
         <p className={s.footScript}>¡nos vemos en la pile!</p>
         <p className={s.footNote}>{event.closingNote}</p>
-        <p className={s.versions}>
-          Otras versiones: <Link href="/v2">2 · Elegante</Link> ·{" "}
-          <Link href="/v3">3 · Urbana</Link>
-        </p>
       </footer>
     </main>
   );

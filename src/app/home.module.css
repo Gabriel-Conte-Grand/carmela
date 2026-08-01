@@ -468,16 +468,20 @@
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   min-height: 2.85rem;
   padding: 0.65rem 1.35rem;
+  border: none;
   border-radius: 0.7rem;
   background: #ff6b5e;
   color: #fff;
+  font: inherit;
   font-weight: 700;
   font-size: 1rem;
   line-height: 1;
   text-decoration: none;
+  cursor: pointer;
   box-shadow: 0 8px 20px rgba(255, 107, 94, 0.28);
   transition: transform 0.15s ease, background 0.15s ease;
 }
@@ -529,6 +533,90 @@
   font-size: 0.85rem;
   color: #5c8288;
   margin: 0.55rem 0 0;
+}
+
+.btn:disabled {
+  opacity: 0.7;
+  cursor: wait;
+  transform: none;
+}
+
+/* ——— RSVP form ——— */
+
+.rsvpForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.rsvpLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #0b444c;
+}
+
+.rsvpInput {
+  min-height: 2.75rem;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid #d7eeec;
+  border-radius: 0.7rem;
+  font: inherit;
+  font-weight: 500;
+  color: #083d42;
+  background: #f8fffe;
+}
+
+.rsvpInput:focus {
+  outline: 3px solid #ffc94a;
+  outline-offset: 1px;
+  border-color: #0e7c86;
+}
+
+.rsvpCheck {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0b444c;
+  cursor: pointer;
+}
+
+.rsvpCheck input {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: #ff6b5e;
+}
+
+.rsvpError {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #d0402f;
+}
+
+.confirmSuccess {
+  margin-top: 1.8rem;
+  background: #fff;
+  border: 1px solid #d7eeec;
+  border-radius: 1rem;
+  padding: 1.75rem;
+}
+
+.confirmSuccessTitle {
+  font-family: var(--font-v1display), sans-serif;
+  font-weight: 600;
+  font-size: 1.45rem;
+  color: #083d42;
+  margin: 0;
+}
+
+.confirmSuccessText {
+  margin: 0.45rem 0 0;
+  color: #3c6a70;
+  line-height: 1.5;
 }
 
 /* ——— Footer ——— */

@@ -1,5 +1,5 @@
 /**
- * Event config — paste Yanina's links here when ready.
+ * Event config — paste pending links here when ready.
  * Empty strings hide / disable the corresponding CTAs.
  */
 export const event = {
@@ -19,13 +19,12 @@ export const event = {
   mapsEmbedUrl:
     "https://maps.google.com/maps?q=-31.73233,-60.80377&z=16&hl=es&output=embed",
   spotifyPlaylistUrl:
-    "https://open.spotify.com/playlist/6mVTWlmG5Eltq88rMXos2v?si=Y30Y2_sFT5SYy76I1tb5Kg",
-  spotifyPlaylistName: "Cumple 15 Carme",
-  googleFormUrl: "",
-  mercadopagoUrl: "",
+    "https://open.spotify.com/playlist/0cI4uLDzFp5yme0a0qvGyU?si=NPQ8zrOfQF6dPGQGThPo4Q",
+  spotifyPlaylistName: "Mis XV",
+  mercadopagoUrl: "https://mpago.la/24tc9un",
   contributionAmount: "$10.000",
-  contributionNote:
-    "Se descuenta de la barra el día del cumple. Sin la seña el lugar no queda reservado.",
+  contributionNote: "Un aporte que se descuenta de la barra.",
+  /** Paste Google Photos shared album URL when ready */
   photosAlbumUrl: "",
   photosNote: "Subí las fotos del cumple al álbum",
   closingNote:
