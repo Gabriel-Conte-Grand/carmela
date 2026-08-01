@@ -24,8 +24,7 @@ export const event = {
   mercadopagoUrl: "https://mpago.la/24tc9un",
   contributionAmount: "$10.000",
   contributionNote: "Un aporte que se descuenta de la barra.",
-  /** Paste Google Photos shared album URL when ready */
-  photosAlbumUrl: "",
+  photosAlbumUrl: "https://photos.app.goo.gl/7Qi1d13pGwqdKFY16",
   photosNote: "Subí las fotos del cumple al álbum",
   closingNote:
     "no te olvides el traje de baño, tus cositas para el agua y tu mejor vibe",
