@@ -1,12 +1,48 @@
 "use client";
 
 import { FormEvent, useEffect, useState } from "react";
+import confetti from "canvas-confetti";
 import { event } from "@/lib/event";
 import s from "@/app/home.module.css";
 
 type Status = "idle" | "loading" | "ok" | "error";
 
 const STORAGE_KEY = "carmela-seña-abierta";
+
+function fireSuccessConfetti() {
+  if (
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    return;
+  }
+
+  const colors = ["#ff6b5e", "#ffc94a", "#0e7c86", "#ff8fb1", "#fff"];
+
+  confetti({
+    particleCount: 110,
+    spread: 70,
+    origin: { y: 0.65 },
+    colors,
+  });
+
+  window.setTimeout(() => {
+    confetti({
+      particleCount: 60,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0, y: 0.7 },
+      colors,
+    });
+    confetti({
+      particleCount: 60,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1, y: 0.7 },
+      colors,
+    });
+  }, 180);
+}
 
 export function ConfirmHome() {
   const [nombre, setNombre] = useState("");
@@ -24,6 +60,12 @@ export function ConfirmHome() {
       // ignore
     }
   }, []);
+
+  useEffect(() => {
+    if (status === "ok") {
+      fireSuccessConfetti();
+    }
+  }, [status]);
 
   function markPayOpened() {
     setOpenedPay(true);
