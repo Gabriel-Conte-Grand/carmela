@@ -4,7 +4,6 @@ import { Fredoka } from "next/font/google";
 import { event, hasLink } from "@/lib/event";
 import { QrImage } from "@/components/QrImage";
 import { ConfirmHome } from "@/components/ConfirmHome";
-import { SpotifyPlaylistLink } from "@/components/SpotifyPlaylistLink";
 import s from "./home.module.css";
 
 const display = Fredoka({
@@ -29,7 +28,6 @@ export default function Home() {
         <div className={s.navLinks}>
           <a href="#fiesta">La fiesta</a>
           <a href="#confirmar">Confirmar</a>
-          <a href="#musica">Música</a>
           <a href="#fotos">Fotos</a>
         </div>
       </nav>
@@ -42,15 +40,15 @@ export default function Home() {
           </h1>
           <p className={s.lead}>
             Una tarde de agua, música y amigos en {event.locationLabel}.
-            Confirmá tu lugar y sumá tus temas a la playlist.
+            Confirmá tu lugar y sumate a la fiesta.
           </p>
           <div className={s.heroCtas}>
             <a href="#confirmar" className={s.btn}>
               Confirmar asistencia
             </a>
-            <SpotifyPlaylistLink className={`${s.btn} ${s.btnGhost}`}>
-              Sumar música
-            </SpotifyPlaylistLink>
+            <a href="#fotos" className={`${s.btn} ${s.btnGhost}`}>
+              Álbum de fotos
+            </a>
           </div>
         </div>
 
@@ -112,33 +110,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={s.section} id="musica">
-        <h2 className={s.sectionHead}>Entre todos</h2>
+      <section className={s.section} id="fotos">
+        <h2 className={s.sectionHead}>Las fotos</h2>
         <p className={s.sectionSub}>
-          La música y las fotos del cumple las armamos entre todos los
-          invitados.
+          Durante la fiesta, subí las fotos que saques al álbum compartido.
+          Después queda de recuerdo para todos.
         </p>
         <div className={s.cards}>
-          <div className={`${s.card} ${s.cardTeal}`}>
-            <Image
-              src="/img/v3-music.jpg"
-              alt="Parlante retro coral al borde de la pileta"
-              width={1400}
-              height={1050}
-            />
-            <div className={s.cardBody}>
-              <h3>La playlist</h3>
-              <p>
-                Unite a{" "}
-                <strong>{event.spotifyPlaylistName}</strong> y sumá los temas
-                que no pueden faltar. Lo que agregues suena en la fiesta.
-              </p>
-              <SpotifyPlaylistLink className={`${s.btn} ${s.btnSun}`}>
-                Unirme y sumar temas
-              </SpotifyPlaylistLink>
-            </div>
-          </div>
-          <div className={`${s.card} ${s.cardLight}`} id="fotos">
+          <div className={`${s.card} ${s.cardLight}`}>
             <Image
               src="/img/v3-photos.jpg"
               alt="Fotos instantáneas sobre una toalla al lado de la pileta"
@@ -146,11 +125,6 @@ export default function Home() {
               height={1050}
             />
             <div className={s.cardBody}>
-              <h3>Las fotos</h3>
-              <p>
-                Durante la fiesta, subí las fotos que saques al álbum
-                compartido. Después queda de recuerdo para todos.
-              </p>
               {albumReady ? (
                 <>
                   <div className={s.qr}>
