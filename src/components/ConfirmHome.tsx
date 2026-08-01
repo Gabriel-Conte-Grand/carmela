@@ -94,7 +94,7 @@ export function ConfirmHome() {
     const n = nombre.trim();
     const a = apellido.trim();
     if (!openedPay) {
-      setError("Primero abrí el link de la seña para anotarte.");
+      setError("Primero abrí el link del aporte para anotarte.");
       return;
     }
     if (!n || !a) {
@@ -141,10 +141,7 @@ export function ConfirmHome() {
     <div className={s.steps}>
       <div className={s.step}>
         <span className={s.stepNum}>1</span>
-        <h3 className={s.stepTitle}>La seña</h3>
-        <p className={s.stepText}>
-          Un aporte de {event.contributionAmount} que se descuenta de la barra.
-        </p>
+        <h3 className={s.stepTitle}>El aporte</h3>
         <a
           href={event.mercadopagoUrl}
           target="_blank"
@@ -165,7 +162,7 @@ export function ConfirmHome() {
         <p className={s.stepText}>
           {openedPay
             ? "Anotate con tu nombre y apellido para quedar en la lista."
-            : "Después de abrir el link de la seña, acá podés anotarte."}
+            : "Después de abrir el link del aporte, acá podés anotarte."}
         </p>
 
         <form className={s.rsvpForm} onSubmit={onSubmit}>

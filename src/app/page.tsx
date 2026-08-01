@@ -100,7 +100,7 @@ export default function Home() {
           <div>
             <h2 className={s.sectionHead}>Reservá tu lugar</h2>
             <p className={s.sectionSub}>
-              Para reservar tu lugar, dejá la seña y anotate con tu nombre.
+              Para reservar tu lugar, dejá tu aporte de $10.000.
             </p>
             <ConfirmHome />
           </div>

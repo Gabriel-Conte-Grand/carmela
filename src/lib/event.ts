@@ -19,11 +19,11 @@ export const event = {
   mapsEmbedUrl:
     "https://maps.google.com/maps?q=-31.73233,-60.80377&z=16&hl=es&output=embed",
   spotifyPlaylistUrl:
-    "https://open.spotify.com/playlist/0cI4uLDzFp5yme0a0qvGyU?si=NPQ8zrOfQF6dPGQGThPo4Q",
+    "https://open.spotify.com/playlist/4VTBgRmIwooKOFknwMsCKg?si=VCZ8PadVQxqu1d7dJzrSBw",
   spotifyPlaylistName: "Mis XV",
   mercadopagoUrl: "https://mpago.la/24tc9un",
   contributionAmount: "$10.000",
-  contributionNote: "Un aporte que se descuenta de la barra.",
+  contributionNote: "Para reservar tu lugar, dejá tu aporte de $10.000.",
   photosAlbumUrl: "https://photos.app.goo.gl/7Qi1d13pGwqdKFY16",
   photosNote: "Subí las fotos del cumple al álbum",
   closingNote:
